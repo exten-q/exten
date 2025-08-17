@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ExtenQ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="absolute inset-0 flex items-center justify-center min-h-full w-full">
+    <div class="container py-12 lg:py-16">
+      <div class="max-w-4xl text-center mx-auto">
+        <p class="mt-6 mb-3 font-semibold lg:text-2xl">
+          Hello There.</p>
+        <p class="mb-12 font-bold tracking-tight text-gray-900 text-4xl lg:text-5xl">
+          I'm keebs Lovers.
+          <br>I <span id="typing"></span> Keyboard mechanical
+        </p>
+        <a href="https://shopee.co.id/extenq" class="cta-button">Get in touch</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const words = ['build', 'modify', 'repair'];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingElement = document.getElementById('typing');
+
+    function type() {
+      const currentWord = words[wordIndex];
+      const visibleText = currentWord.substring(0, charIndex);
+      typingElement.textContent = visibleText;
+
+      if (!isDeleting && charIndex < currentWord.length) {
+        charIndex++;
+        setTimeout(type, 100);
+      } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(type, 50);
+      } else {
+        if (!isDeleting) {
+          isDeleting = true;
+          setTimeout(type, 1000);
+        } else {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          setTimeout(type, 300);
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', type);
+  </script>
+</body>
+</html>
