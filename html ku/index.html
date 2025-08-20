@@ -9,8 +9,23 @@
   <div id="app"></div>
 
   <script>
-    // HTML konten dalam string
-    const htmlContent = `
+    // Fungsi encode base64 (untuk demo, nanti ini dari server atau manual saja)
+    function b64EncodeUnicode(str) {
+      return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, 
+        function toSolidBytes(match, p1) {
+          return String.fromCharCode('0x' + p1);
+      }));
+    }
+
+    // Fungsi decode base64 ke string
+    function b64DecodeUnicode(str) {
+      return decodeURIComponent(atob(str).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+    }
+
+    // HTML asli
+    const htmlContentRaw = `
       <div class="absolute inset-0 flex items-center justify-center min-h-full w-full">
         <div class="container py-12 lg:py-16">
           <div class="max-w-4xl text-center mx-auto">
@@ -24,9 +39,8 @@
       </div>
     `;
 
-    // CSS dalam string
-    const cssContent = `
-      /* Layout styles */
+    // CSS asli
+    const cssContentRaw = `
       body { margin:0; padding:0; font-family:sans-serif; }
       .absolute { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; min-height:100vh; width:100%; }
       .container { padding-top:3rem; padding-bottom:4rem; }
@@ -36,16 +50,9 @@
       .mb-12 { margin-bottom:3rem; }
       .font-semibold { font-weight:600; }
       .font-bold { font-weight:550; }
-      .font-medium { font-weight:500; }
       .text-center { text-align:center; }
       .tracking-tight { letter-spacing:-0.025em; }
-      .lg\\:text-2xl { font-size:1.5rem; }
-      .text-4xl { font-size:2.25rem; }
-      .lg\\:text-5xl { font-size:3rem; }
-      .text-lg { font-size:1.125rem; }
       .text-gray-900 { color:#1a202c; }
-      .text-white { color:white; }
-      p.font-semibold, p.font-bold { margin:0 !important; }
       .cta-button {
         background-color:#6366f1;
         border-radius:9999px;
@@ -57,17 +64,8 @@
         text-decoration:none;
         display:inline-block;
       }
-      mark {
-        background: linear-gradient(to right, #fef08a 0%, #fef08a 100%);
-        background-repeat: no-repeat;
-        background-size: 100% 30%;
-        background-position: 0 80%;
-      }
       #typing {
         background: linear-gradient(to right, #fef08a 0%, #fef08a 100%);
-        background-repeat: no-repeat;
-        background-size: 100% 30%;
-        background-position: 0 80%;
         border-right: 2px solid #1a202c;
         padding-right: 4px;
         animation: blink-caret 0.75s step-end infinite;
@@ -79,11 +77,16 @@
       }
     `;
 
-    // Masukkan CSS ke tag <style>
-    document.getElementById('dynamic-style').textContent = cssContent;
+    // Encode ke base64 (di sini dilakukan secara langsung, tapi idealnya ini dilakukan server-side)
+    const encodedHTML = b64EncodeUnicode(htmlContentRaw);
+    const encodedCSS = b64EncodeUnicode(cssContentRaw);
 
-    // Masukkan HTML ke dalam <div id="app">
-    document.getElementById('app').innerHTML = htmlContent;
+    // Decode dan masukkan ke halaman
+    const decodedHTML = b64DecodeUnicode(encodedHTML);
+    const decodedCSS = b64DecodeUnicode(encodedCSS);
+
+    document.getElementById('dynamic-style').textContent = decodedCSS;
+    document.getElementById('app').innerHTML = decodedHTML;
 
     // Script typing effect
     const words = ['build', 'modify', 'repair'];
