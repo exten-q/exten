@@ -1,87 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>ExtenQ</title>
-<style id="dynamic-style"></style>
+  <meta charset="UTF-8">
+  <title>ExtenQ</title>
+  <style>
+    /* Layout styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    .absolute {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      width: 100%;
+    }
+
+    .container {
+      padding-top: 3rem;
+      padding-bottom: 4rem;
+    }
+
+    .max-w-4xl {
+      max-width: 56rem;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    /* Typography spacing */
+    .mt-6 {
+      margin-top: 1.5rem;
+    }
+
+    .mb-3 {
+      margin-bottom: 0.75rem;
+    }
+
+    .mb-12 {
+      margin-bottom: 3rem;
+    }
+
+    /* Font styles */
+    .font-semibold {
+      font-weight: 600;
+    }
+
+    .font-bold {
+      font-weight: 550;
+    }
+
+    .font-medium {
+      font-weight: 500;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .tracking-tight {
+      letter-spacing: -0.025em;
+    }
+
+    /* Font sizes */
+    .lg\:text-2xl {
+      font-size: 1.5rem;
+    }
+
+    .text-4xl {
+      font-size: 2.25rem;
+    }
+
+    .lg\:text-5xl {
+      font-size: 3rem;
+    }
+
+    .text-lg {
+      font-size: 1.125rem;
+    }
+
+    /* Font colors */
+    .text-gray-900 {
+      color: #1a202c;
+    }
+
+    .text-white {
+      color: white;
+    }
+
+    p.font-semibold {
+      margin: 0 !important;
+    }
+
+    p.font-bold {
+      margin: 0 !important;
+    }
+
+    /* Button styling */
+    .cta-button {
+      background-color: #6366f1; /* bg-indigo-500 */
+      border-radius: 9999px;
+      margin-top: 2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      font-weight: 500;
+      font-size: 1.125rem;
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    /* Highlight styles */
+    mark {
+      background: linear-gradient(to right, #fef08a 0%, #fef08a 100%);
+      background-repeat: no-repeat;
+      background-size: 100% 30%;
+      background-position: 0 80%;
+    }
+
+    /* Typing effect */
+    #typing {
+      background: linear-gradient(to right, #fef08a 0%, #fef08a 100%);
+      background-repeat: no-repeat;
+      background-size: 100% 30%;
+      background-position: 0 80%;
+      border-right: 2px solid #1a202c;
+      padding-right: 4px;
+      animation: blink-caret 0.75s step-end infinite;
+      display: inline-block;
+    }
+
+    @keyframes blink-caret {
+      from, to {
+        border-color: transparent;
+      }
+      50% {
+        border-color: #1a202c;
+      }
+    }
+  </style>
 </head>
 <body>
-<div id="app"></div>
+  <div class="absolute inset-0 flex items-center justify-center min-h-full w-full">
+    <div class="container py-12 lg:py-16">
+      <div class="max-w-4xl text-center mx-auto">
+        <p class="mt-6 mb-3 font-semibold lg:text-2xl">
+          Hello There.
+        </p>
+        <p class="mb-12 font-bold tracking-tight text-gray-900 text-4xl lg:text-5xl">
+          I'm keebs Lovers.
+          <br>I <span id="typing"></span> Keyboard mechanical
+        </p>
+        <a href="https://shopee.co.id/extenq" class="cta-button">Get in touch</a>
+      </div>
+    </div>
+  </div>
 
-<script>
-// Base64 encode konten HTML
-const encodedHTML = `CiAgICA8ZGl2IGNsYXNzPSJhYnNvbHV0ZSBpbnNldC0wIGZsZXgg
-aXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIG1pbi1oLWZ1bGwgd
-y13aWR0aCI+CiAgICAgICAgPGRpdiBjbGFzcz0iY29udGFpbmVyIHB
-5LTEyIGxnOnB5LTE2Ij4KICAgICAgICAgICAgPGRpdiBjbGFzcz0i
-bWF4LXctNGx4bCB0ZXh0LWNlbnRlciBteC1hdXRvIj4KICAgICAgIC
-AgICAgICAgPHAgY2xhc3M9Im10LTYgbWItMyBmb250LXNlbWlib2x
-kIGxnOnRleHQtMiI+SGVsbG8gVGhlcmUuPC9wPgogICAgICAgICAgI
-CAgICA8cCBjbGFzcz0ibWItMTIgZm9udC1ib2xkIHRyYWNraW5nLXR
-pZ2h0IHRleHQtZ3JheS05MDAgdGV4dC00bHggbGc6dGV4dC01bHgiP
-gogICAgICAgICAgICAgICAgSSdtIGtlZWJzIExvdmVycy48YnI+SS
-A8c3BhbCBpZD0idHlwaW5nIj48L3NwYW4+IEtleWJvYXJkIG1lY2hh
-bmljYWwKICAgICAgICAgICAgICAgIDwvcD4KICAgICAgICAgICAgICA
-gPGEgaHJlZj0iaHR0cHM6Ly9zaG9wZWUuY28uaWQvZXh0ZW5xIiBjb
-GFzcz0iY3RhLWJ1dHRvbiI+R2V0IGluIHRvdWNoPC9hPgogICAgICAg
-ICAgICA8L2Rpdj4KICAgICAgICA8L2Rpdj4KICAgIDwvZGl2PgogICA
-gCiAgIA==`;
+  <script>
+    const words = ['build', 'modify', 'repair'];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingElement = document.getElementById('typing');
 
-// Base64 encode konten CSS
-const encodedCSS = `
-LyogTGF5b3V0IHN0eWxlcyAqLwogYm9keSB7IG1hcmdpbjowOyBwYWR
-kaW5nOjAgZm9udC1mYW1pbHk6c2Fucy1zZXJpZjt9Ci5hYnNvbHV0Z
-SB7IHBvc2l0aW9uOmFic29sdXRlOyBpbmNldDoxOyBkaXNwbGF5OmZ
-sZXg7IGFsaWduLWl0ZW1zOmNlbnRlcioganVzdGlmeS1jZW50ZXI7IG
-1pbi1oZWlnaHQ6MTAwdmg7IHdpZHRoOjEwMCU7IH0KLmNvbnRhaW5l
-ciB7IHBhZGRpbmctdG9wOjNyZW07IHBhZGRpbmctYm90dG9tOjRyZW
-07fQoubWF4LXctNGx4bCB7IG1heC13aWR0aDo1NmVtOyBtYXJnaW4t
-bGVmdDphdXRvOyBtYXJnaW4tcmlnaHQ6YXV0byI7IHRleHQtYWxpZ246
-Y2VudGVyOyB9Ci5tdC02IHsgbWFyZ2luLXRvcToxLjVyZW07IH0K
-Lm1iLTMgeyBtYXJnaW4tYm90dG9tOjAuNzVlbTsgfQoubWIxMiB7IG
-1hcmdpbi1ib3R0b206M3JlbTsgfQouZm9udC1zZW1pYm9sZCB7IGZv
-bnQtd2VpZ2h0OjYwMDsgfQouZm9udC1ib2xkIHsgZm9udC13ZWlnaH
-Q6NTUwOyB9Ci5mb250LW1lZGl1bSB7IGZvbnQtd2VpZ2h0OjUwMDsg
-fQoudGV4dC1jZW50ZXIgeyB0ZXh0LWFsaWduOmNlbnRlcjsgfQoudG
-Fja2luZy10aWdodCB7IGxldHRlci1zcGFjaW5nOi0wLjAyNWVtOyB9C
-i5sZ1xcdGV4dC0y eCB7IGZvbnQtc2l6ZToxLjVybTsgfQoudGV4dC00
-bHggeyBmb250LXNpemU6Mi4yNXJlbTsgfQoubGdcdGV4LTV4 bCB7IGZv
-bnQtc2l6ZToycmVtOyB9Ci50ZXh0LWxgeyBmb250LXNpemU6MS4xMjV
-yZW07IH0KLnRleHQtZ3JheS05MDAgeyBjb2xvcjojMWEyMDJjOyB9Ci
-50ZXh0LXdoaXRlIHsgY29sb3I6d2hpdGU7IH0KcC5mb250LXNlbWli
-b2wsIHAuZm9udC1ib2xkIHsgbWFyZ2luOjAhICFpbXBvcnRhbnQ7IH0
-KLmN0YS1idXR0b24geyBiYWNrZ3JvdW5kLWNvbG9yOiM2MzY2ZjE7I
-GJvcmRlci1yYWRpdXM6OTk5OXB4OyBtYXJnaW4tdG9wOjJyZW07IHBh
-ZGRpbmc6MC43NXJlbSAycmVtOyBmb250LXdlaWdodDo1MDAsIGZvbnQt
-c2l6ZToxLjEyNWVtOyBjb2xvcjp3aGl0ZTsgdGV4dC1kZWNvcmF0aW9
-uOm5vbmU7IGRpc3BsYXk6aW5saW5lLWJsb2NrOyB9Cm1hcmsgewogIG
-JhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byByaWdodCwgI2Zl
-ZjA4YSAwJSwgI2ZlZjA4YSAxMDAlKTsKICBiYWNrZ3JvdW5kLXJlcGV
-hdDogbm8tcmVwZWF0OwogIGJhY2tncm91bmQtc2l6ZTogMTAwJSAzMC
-U7CiAgYmFja2dyb3VuZC1wb3NpdGlvbjogMCA4MCU7Cn0KI3R5cGlu
-ZyB7CiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h
-0LCAjZmVmMDhhIDAlLCAjZmVmMDhhIDEwMCUpOwogIGJhY2tncm91bm
-QtcmVwZWF0OiBuby1yZXBlYXQ7CiAgYmFja2dyb3VuZC1zaXplOiAxM
-DAlIDMwJTsKICBib3JkZXItcmlnaHQ6IDJweCBzb2xpZCAjMWEyMDJj
-OwogIHBhZGRpbmctcmlnaHQ6IDRweDsKICBhbmltYXRpb246IGJsaW5r
-LWNhcmV0IDAuNzVzIHN0ZXAtZW5kIGluZmluaXRlOwogIGRpc3BsYXk
-6IGlubGluZS1ibG9jazsKfQpAa2V5ZnJhbWVzIGJsaW5rLWNhcmV0IH
-sKICBmcm9tLCB0byB7IGJvcmRlci1jb2xvcjogdHJhbnNwYXJlbnQ7
-IH0KICA1MCUgeyBib3JkZXItY29sb3I6ICMxYTIwMjM7IH0KfQ==`;
+    function type() {
+      const currentWord = words[wordIndex];
+      const visibleText = currentWord.substring(0, charIndex);
+      typingElement.textContent = visibleText;
 
-// Base64 encode konten JS (tanpa template literal untuk kejelasan)
-const encodedJS = `
-Ly8gU2NyaXB0IHR5cGluZyBlZmZlY3QK
-Y29uc3Qgd29yZHMgPSBbJ2J1aWxkJywgbW9kaWZ5JywgJ3JlcGFpciddOwps
-ZXQgd29yZEluZGV4ID0gMDsKbGV0IGNoYXJJbmRleCA9IDA7CmxldCBpc0Rl
-bGV0aW5nID0gZmFsc2U7CmNvbnN0IHR5cGluZ0VsZW1lbnQgPSBkb2N1bWVu
-dC5nZXRFbGVtZW50QnlJZCgndHlwaW5nJyk7CgpmdW5jdGlvbiB0eXBlKCkgew
-ogIGNvbnN0IGN1cnJlbnRXb3JkID0gd29yZHNbd29yZEluZGV4XTsKICBjb25
-zdCB2aXNpYmxlVGV4dCA9IGN1cnJlbnRXb3JkLnN1YnN0cmluZygwLCBjaGFy
-SW5kZXgpOwogIHR5cGluZ0VsZW1lbnQudGV4dENvbnRlbnQgPSB2aXNpYmxl
-VGV4OwoKICBpZiAoIWFpc0RlbGV0aW5nICYgY2hhckluZGV4IDwgY3VycmVu
-dFdvcmQubGVuZ3RoKSB7CiAgICBjaGFySW5kZXIrKzsKICAgIHNldFRpbWVv
-dCh0eXBlLCAxMDApOwogIH0gZWxzZSBpZiAoaXNEZWxldGluZyAmJiBjaGFy
-SW5kZXggPiAwKSB7CiAgICBjaGFySW5kZXgtLTsKICAgIHNldFRpbWVvdCh0e
-XBlLCA1MCk7CiAgfSBlbHNlIHsKICAgIGlmICghaXNEZWxldGluZykgewogIC
-AgICBpc0RlbGV0aW5nID0gdHJ1ZTsKICAgICAgc2V0VGltZW91dCh0e
+      if (!isDeleting && charIndex < currentWord.length) {
+        charIndex++;
+        setTimeout(type, 100);
+      } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(type, 50);
+      } else {
+        if (!isDeleting) {
+          isDeleting = true;
+          setTimeout(type, 1000);
+        } else {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          setTimeout(type, 300);
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', type);
+  </script>
+</body>
+</html>
