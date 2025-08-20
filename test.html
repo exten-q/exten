@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Test</title></head>
+<body>
+  <div id="app"></div>
+  <script>
+    const encoded = "PGgxPkhlbGxvLCBXb3JsZCE8L2gxPg=="; // Ini base64 dari "<h1>Hello, World!</h1>"
+    const decoded = atob(encoded);
+    document.getElementById('app').innerHTML = decoded;
+  </script>
+</body>
+</html>
